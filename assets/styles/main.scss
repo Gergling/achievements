@@ -1,0 +1,100 @@
+$background: #444;
+
+$gold: gold;
+$silver: silver;
+$bronze: #b07000;
+
+$categoryArtistic: #b00;
+$categorySocial: yellow;
+$categoryHealth: green;
+$categoryCareer: blue;
+
+$text: #ddd;
+
+@function getGradient($colour) {
+  @return linear-gradient(
+    135deg, 
+    lighten($colour, 30%), 
+    darken($colour, 30%)
+  );
+}
+
+html > body {
+  background-color: $background;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  li.rating {
+    display: flex;
+    align-items: flex-start;
+    // width: 90%;
+    margin: auto;
+    max-width: 22em;
+    flex: 0 0 30%;
+  
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+  
+    $border: 5px;
+    background: $background;
+    background-clip: padding-box; /* !importanté */
+    border: solid $border transparent; /* !importanté */
+    border-radius: 1em;
+
+    width: 300px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -$border; /* !importanté */
+      border-radius: inherit; /* !importanté */
+    }
+
+    &.gold:before {
+      background: getGradient($gold);
+    }
+    &.silver:before {
+      background: getGradient($silver);
+    }
+    &.bronze:before {
+      background: getGradient($bronze);
+    }
+
+    > a {
+      display: flex;
+      gap: 10px;
+      text-decoration: none;
+      color: $text;
+
+      .icon {
+        width: 100px;
+        height: 100px;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
+      
+        &.category-artistic > svg {
+          color: $categoryArtistic;
+        }
+        &.category-social > svg {
+          color: $categorySocial;
+        }
+        &.category-health > svg {
+          color: $categoryHealth;
+        }
+        &.category-career > svg {
+          color: $categoryCareer;
+        }
+      }
+      
+    }
+  }
+}
