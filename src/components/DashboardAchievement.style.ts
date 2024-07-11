@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { AchievementConfig } from '../types';
+import tinyColor from 'tinycolor2';
 
 const borderWidth = '5px';
 
@@ -8,33 +9,28 @@ export const Container = styled.li<{
 }>`
   display: flex;
   align-items: flex-start;
+  width: 300px;
+
   margin: auto;
   max-width: 22em;
   flex: 0 0 30%;
+
+  background: #444;
 
   position: relative;
   padding: 10px;
   box-sizing: border-box;
 
-  // $border: 5px;
-  background: #444;
-  background-clip: padding-box; /* !importanté */
-  border: solid ${borderWidth} transparent; /* !importanté */
-  border-radius: 1em;
-
-  width: 300px;
-
-  $gold: gold;
-  $silver: silver;
-  $bronze: #b07000;
+  position: relative;
+  padding: 20px 30px;
+  margin: ${borderWidth};
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
-    margin: -${borderWidth}; /* !importanté */
-    border-radius: inherit; /* !importanté */
+    inset: 0;
+    border-radius: 20px;
+    padding: ${borderWidth}; /* control the border thickness */
 
     ${({ rating }) => {
       const colour = ({
@@ -42,17 +38,24 @@ export const Container = styled.li<{
         silver: 'silver',
         bronze: '#b07000',
       }[rating]);
+      const dark = tinyColor(colour).darken(30).toRgbString();
+      const light = tinyColor(colour).lighten(30).toRgbString();
       return {
-        '--color': colour,
         background: `linear-gradient(
           135deg, 
-          hsl(from var(--colour) h s calc(${colour} + 30%)), 
-          hsl(from var(--colour) h s calc(${colour} - 30%))
+          ${light}, 
+          ${dark}
         )`
       }
     }}
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
 `;
+
+// TODO: Might be worth considering a background SVG when the graphical improvement becomes a factor.
 
 export const Link = styled.a`
   display: flex;
