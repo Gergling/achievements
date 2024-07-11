@@ -11,3 +11,13 @@ export type AchievementData = {
   path: string;
   html: string;
 };
+
+export type AchievementConfig = {
+  key: string;
+  category: 'artistic' | 'social' | 'health' | 'career';
+  subcategory: 'physical' | 'coding' | 'performance' | 'crafts' | 'writing';
+  rating: 'gold' | 'silver' | 'bronze';
+  date: Date;
+  description: string;
+  component: React.ReactElement;
+}

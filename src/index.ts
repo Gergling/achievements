@@ -1,3 +1,5 @@
+// TODO: Make this file redundant.
+
 import * as fs from 'fs';
 import { AchievementData } from './types.ts';
 

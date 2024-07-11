@@ -1,0 +1,17 @@
+import { AchievementConfig } from "../types";
+
+const Component = () => <>
+  Mis-dated. This is about the cosplay. The date of the event is the correct date.
+</>;
+
+const data: AchievementConfig = {
+  key: 'cosplay-cloud-strife',
+  category: 'artistic',
+  subcategory: 'crafts',
+  rating: 'gold',
+  date: new Date('2023-03-18'),
+  description: 'Cloud Strife cosplay', 
+  component: <Component />,
+};
+
+export default data;
