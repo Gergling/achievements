@@ -10,8 +10,8 @@ const Component = () => <>
 
 const data: AchievementConfig = {
   name: 'db-bench-40',
-  category: 'health',
-  subcategory: 'physical',
+  pillar: 'health',
+  hobby: 'physical',
   rating: 'gold',
   date: new Date('2024-06-27'),
   description: 'Benchmark 40kg dumbbells', 

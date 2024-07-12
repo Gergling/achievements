@@ -8,8 +8,8 @@ const Component = () => <>
 
 const data: AchievementConfig = {
   name: 'first-hackathon',
-  category: 'career',
-  subcategory: 'coding',
+  pillar: 'career',
+  hobby: 'coding',
   rating: 'silver',
   date: new Date('2024-07-03'),
   description: 'First hackathon',

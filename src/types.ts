@@ -4,8 +4,8 @@
 
 export type AchievementConfig = {
   name: string;
-  category: 'artistic' | 'social' | 'health' | 'career';
-  subcategory: 'physical' | 'coding' | 'performance' | 'crafts' | 'writing';
+  pillar: 'artistic' | 'social' | 'health' | 'career';
+  hobby: 'physical' | 'coding' | 'performance' | 'crafts' | 'writing';
   rating: 'gold' | 'silver' | 'bronze';
   date: Date;
   description: string;

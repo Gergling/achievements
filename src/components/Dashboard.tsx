@@ -89,9 +89,6 @@ export const Dashboard = () => {
   return (
     <ViewContext.Provider value="dashboard">
       <ul>
-        <li>Consider renaming category and subcategory to something like "pillar" and "hobby".</li>
-      </ul>
-      <ul>
         {recent.map((achievement) => <DashboardRecent
           key={achievement.name}
           {...achievement}
@@ -110,16 +107,16 @@ export const Dashboard = () => {
               <List>
                 {achievements.map(({
                   name,
-                  category,
-                  subcategory,
+                  pillar,
+                  hobby,
                   rating,
                   date,
                   description,
                 }) => <DashboardAchievement
                   key={name}
                   name={name}
-                  category={category}
-                  subcategory={subcategory}
+                  pillar={pillar}
+                  hobby={hobby}
                   rating={rating}
                   date={date}
                   description={description}

@@ -5,8 +5,8 @@ import { Icon } from "./Icon";
 
 export const DashboardRecent = ({
   name,
-  category,
-  subcategory,
+  pillar,
+  hobby,
   rating,
   date,
   description,
@@ -14,7 +14,7 @@ export const DashboardRecent = ({
 }: AchievementConfig) => (
   <Container rating={rating}>
     <Link href={`/${name}`}>
-      <Icon category={category} subcategory={subcategory} />
+      <Icon pillar={pillar} hobby={hobby} />
       <div>
         <div style={{ display: 'flex' }}>
           <div className="date">{getDashboardDateFormat(date)}</div>
