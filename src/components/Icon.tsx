@@ -3,7 +3,7 @@ import Dumbbell from '../assets/dumbbell.svg';
 
 import { AchievementConfig } from "../types";
 import { colour } from "../utils/category-colour";
-import { Container } from './Icon.style';
+import { Container, Unknown } from './Icon.style';
 
 type IconProps = {
   category: AchievementConfig['category'];
@@ -20,7 +20,7 @@ const IconByCategory = ({
     case 'health-physical':
       return <Dumbbell />;
     default:
-      return <Dumbbell />;
+      return <Unknown>?</Unknown>;
   }
 }
 

@@ -9,3 +9,9 @@ export const Container = emotionStyled.div`
   flex-shrink: 0;
   color: ${({ color }) => color};
 `;
+
+export const Unknown = emotionStyled.div`
+  font-size: 90px;
+  text-align: center;
+  font-weight: bold;
+`;
