@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
-import { ListItem } from './Dashboard.style';
+import { RatingsBorder } from './Dashboard.style';
 
-export const Container = styled(ListItem)`
+export const Container = styled(RatingsBorder)`
+  display: flex;
+  align-items: flex-start;
+
+  flex: 0 0 30%;
   width: 300px;
 `;
 

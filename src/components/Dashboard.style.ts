@@ -17,21 +17,20 @@ export const List = styled.ul`
 `;
 
 // TODO: Might be worth considering a background SVG when the graphical improvement becomes a factor.
-export const ListItem = styled.li<{
+export const RatingsBorder = styled.li<{
   rating: AchievementConfig['rating'];
 }>`
   display: flex;
   align-items: flex-start;
 
-  margin: auto;
   flex: 0 0 30%;
+  margin: auto;
 
   background: #444;
 
   position: relative;
   box-sizing: border-box;
 
-  position: relative;
   padding: ${VERTICAL_PADDING}px 30px;
   margin: ${borderWidth};
 

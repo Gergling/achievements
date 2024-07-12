@@ -16,14 +16,14 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: "/:achievement",
+    path: "/:achievementName",
     element: <AchievementPage />,
   },
 ]);
 
 const App = () => (
   <Container>
-    <RouterProvider router={router} />;
+    <RouterProvider router={router} />
   </Container>
 );
 
