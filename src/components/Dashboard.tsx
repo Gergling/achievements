@@ -5,6 +5,7 @@ import { DashboardAchievement } from './DashboardAchievement';
 import ViewContext from './ViewContext';
 import { AchievementConfig } from '../types';
 import { isSince } from '../utils/is-since';
+import { DashboardRecent } from './DashboardRecent';
 
 type Group = {
   label: string;
@@ -35,22 +36,36 @@ const getGroupingByDate = (achievementsOriginal: AchievementConfig[]) => {
       }).map(({ achievement }) => achievement),
     };
   });
-}
+};
+
+const isNonNil = (value: AchievementConfig | null | undefined | void): value is AchievementConfig =>
+  value != null;
+
+const getRecent = (achievements: AchievementConfig[]): AchievementConfig[] =>
+  ['gold', 'silver', 'bronze'].map((rating) =>
+    achievements.find((achievement) => achievement.rating === rating)
+  ).filter(isNonNil);
 
 export const Dashboard = () => {
   const [grouping, setGrouping] = useState<Group[]>([]);
+  const [recent, setRecent] = useState<AchievementConfig[]>([]);
 
   useEffect(() => {
     setGrouping(getGroupingByDate(list));
-  });
+    setRecent(getRecent(list));
+  }, [list]);
 
   return (
     <ViewContext.Provider value="dashboard">
       <ul>
-        <li>Most recent gold, silver and bronze achievements should go here.</li>
         <li>A mode for switching between grouping by date or by rating (and maybe even a filter for category?)</li>
         <li>Consider renaming category and subcategory to something like "pillar" and "hobby".</li>
         <li>Achievements should always be sorted newest to oldest.</li>
+      </ul>
+      <ul>
+        {recent.map((achievement) => <DashboardRecent
+          {...achievement}
+        />)}
       </ul>
       <ul>
         {grouping

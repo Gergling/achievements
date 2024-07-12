@@ -1,24 +1,26 @@
 import { AchievementConfig } from "../types";
 import { getDashboardDateFormat } from "../utils/get-dashboard-date-format";
-import { Container, Link } from "./DashboardAchievement.style";
+import { Container, Link } from "./DashboardRecent.style";
 import { Icon } from "./Icon";
 
-type DashboardAchievementProps = Omit<AchievementConfig, 'component'>;
-
-export const DashboardAchievement = ({
+export const DashboardRecent = ({
   key,
   category,
   subcategory,
   rating,
   date,
   description,
-}: DashboardAchievementProps) => (
+  component,
+}: AchievementConfig) => (
   <Container rating={rating}>
     <Link href={`/${key}`}>
       <Icon category={category} subcategory={subcategory} />
       <div>
-        <div className="date">{getDashboardDateFormat(date)}</div>
-        <div className="description">{description}</div>
+        <div style={{ display: 'flex' }}>
+          <div className="date">{getDashboardDateFormat(date)}</div>
+          <div style={{ overflow: 'hidden' }}>{description}</div>
+        </div>
+        <div>{component}</div>
       </div>
     </Link>
   </Container>
