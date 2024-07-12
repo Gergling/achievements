@@ -90,7 +90,6 @@ export const Dashboard = () => {
     <ViewContext.Provider value="dashboard">
       <ul>
         <li>Consider renaming category and subcategory to something like "pillar" and "hobby".</li>
-        <li>Achievements should always be sorted newest to oldest.</li>
       </ul>
       <ul>
         {recent.map((achievement) => <DashboardRecent

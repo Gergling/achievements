@@ -15,13 +15,14 @@ const IconByCategory = ({
   subcategory,
 }: IconProps) => {
   switch (`${category}-${subcategory}`) {
-    case 'artistic-coding':
-      return <CodeBrackets />;
     case 'health-physical':
       return <Dumbbell />;
-    default:
-      return <Unknown>?</Unknown>;
   }
+  switch (subcategory) {
+    case 'coding':
+      return <CodeBrackets />;
+  }
+  return <Unknown>?</Unknown>;
 }
 
 export const Icon = ({
