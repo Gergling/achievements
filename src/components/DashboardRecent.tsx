@@ -4,7 +4,7 @@ import { Container, Link } from "./DashboardRecent.style";
 import { Icon } from "./Icon";
 
 export const DashboardRecent = ({
-  key,
+  name,
   category,
   subcategory,
   rating,
@@ -13,7 +13,7 @@ export const DashboardRecent = ({
   component,
 }: AchievementConfig) => (
   <Container rating={rating}>
-    <Link href={`/${key}`}>
+    <Link href={`/${name}`}>
       <Icon category={category} subcategory={subcategory} />
       <div>
         <div style={{ display: 'flex' }}>

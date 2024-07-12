@@ -5,7 +5,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'cosplay-cloud-strife',
+  name: 'cosplay-cloud-strife',
   category: 'artistic',
   subcategory: 'crafts',
   rating: 'gold',

@@ -6,7 +6,7 @@ import { Icon } from "./Icon";
 type DashboardAchievementProps = Omit<AchievementConfig, 'component'>;
 
 export const DashboardAchievement = ({
-  key,
+  name,
   category,
   subcategory,
   rating,
@@ -14,7 +14,7 @@ export const DashboardAchievement = ({
   description,
 }: DashboardAchievementProps) => (
   <Container rating={rating}>
-    <Link href={`/${key}`}>
+    <Link href={`/${name}`}>
       <Icon category={category} subcategory={subcategory} />
       <div>
         <div className="date">{getDashboardDateFormat(date)}</div>

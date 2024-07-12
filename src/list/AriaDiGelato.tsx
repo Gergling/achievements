@@ -5,7 +5,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'aria-di-gelato',
+  name: 'aria-di-gelato',
   category: 'artistic',
   subcategory: 'performance',
   rating: 'gold',

@@ -5,7 +5,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'phase-indicator',
+  name: 'phase-indicator',
   category: 'artistic',
   subcategory: 'crafts',
   rating: 'silver',

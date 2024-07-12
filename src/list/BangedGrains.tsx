@@ -5,7 +5,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'banged-grains',
+  name: 'banged-grains',
   category: 'artistic',
   subcategory: 'coding',
   rating: 'bronze',

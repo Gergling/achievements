@@ -9,7 +9,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'achievement-display',
+  name: 'achievement-display',
   category: 'artistic',
   subcategory: 'coding',
   rating: 'silver',

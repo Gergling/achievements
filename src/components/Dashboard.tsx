@@ -12,6 +12,8 @@ type Group = {
   achievements: AchievementConfig[];
 };
 
+type GroupingMode = 'date' | 'rating';
+
 const dateGroups = {
   '7 Days': (date: Date) => isSince(date, 7),
   '30 Days': (date: Date) => isSince(date, 30),
@@ -19,7 +21,13 @@ const dateGroups = {
   'Earlier': () => true,
 };
 
-const getGroupingByDate = (achievementsOriginal: AchievementConfig[]) => {
+const ratingLabels = [
+  { rating: 'gold', label: 'Gold' },
+  { rating: 'silver', label: 'Silver' },
+  { rating: 'bronze', label: 'Bronze' },
+];
+
+const getGroupingByDate = (achievementsOriginal: AchievementConfig[]): Group[] => {
   let achievements = achievementsOriginal.map((achievement) => ({
     achievement,
     isGrouped: false,
@@ -38,51 +46,79 @@ const getGroupingByDate = (achievementsOriginal: AchievementConfig[]) => {
   });
 };
 
+const getGroupingByRating = (achievements: AchievementConfig[]): Group[] =>
+  ratingLabels.map(({ rating, label }) => ({
+    label,
+    achievements: achievements.filter((achievement) => achievement.rating === rating),
+  }));
+
 const isNonNil = (value: AchievementConfig | null | undefined | void): value is AchievementConfig =>
   value != null;
 
 const getRecent = (achievements: AchievementConfig[]): AchievementConfig[] =>
-  ['gold', 'silver', 'bronze'].map((rating) =>
+  ratingLabels.map(({ rating }) =>
     achievements.find((achievement) => achievement.rating === rating)
   ).filter(isNonNil);
 
 export const Dashboard = () => {
   const [grouping, setGrouping] = useState<Group[]>([]);
   const [recent, setRecent] = useState<AchievementConfig[]>([]);
+  const [groupingMode, setGroupingMode] = useState<GroupingMode>('date');
+
+  const updateGrouping = () => {
+    if (groupingMode === 'date') {
+      setGrouping(getGroupingByDate(list));
+    } else {
+      setGrouping(getGroupingByRating(list));
+    }
+  };
+
+  const handleGroupingMode = (mode: GroupingMode) => () => {
+    setGroupingMode(mode);
+  };
 
   useEffect(() => {
-    setGrouping(getGroupingByDate(list));
+    updateGrouping();
     setRecent(getRecent(list));
   }, [list]);
+
+  useEffect(() => {
+    updateGrouping();
+  }, [groupingMode]);
 
   return (
     <ViewContext.Provider value="dashboard">
       <ul>
-        <li>A mode for switching between grouping by date or by rating (and maybe even a filter for category?)</li>
         <li>Consider renaming category and subcategory to something like "pillar" and "hobby".</li>
         <li>Achievements should always be sorted newest to oldest.</li>
       </ul>
       <ul>
         {recent.map((achievement) => <DashboardRecent
+          key={achievement.name}
           {...achievement}
         />)}
       </ul>
+      By
+      <button onClick={handleGroupingMode('date')}>Date</button>
+      |
+      <button onClick={handleGroupingMode('rating')}>Rating</button>
       <ul>
         {grouping
           .filter(({ achievements }) => achievements.length > 0)
           .map(({ label, achievements }) => (
-            <li>
-              {label}
+            <li key={label}>
+              {grouping.length > 1 ? label : ''}
               <List>
                 {achievements.map(({
-                  key,
+                  name,
                   category,
                   subcategory,
                   rating,
                   date,
                   description,
                 }) => <DashboardAchievement
-                  key={key}
+                  key={name}
+                  name={name}
                   category={category}
                   subcategory={subcategory}
                   rating={rating}

@@ -3,7 +3,7 @@
 // Bronze: Routine goal or project completion.
 
 export type AchievementConfig = {
-  key: string;
+  name: string;
   category: 'artistic' | 'social' | 'health' | 'career';
   subcategory: 'physical' | 'coding' | 'performance' | 'crafts' | 'writing';
   rating: 'gold' | 'silver' | 'bronze';

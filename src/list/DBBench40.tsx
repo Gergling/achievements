@@ -9,7 +9,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'db-bench-40',
+  name: 'db-bench-40',
   category: 'health',
   subcategory: 'physical',
   rating: 'gold',

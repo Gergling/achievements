@@ -7,7 +7,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'first-hackathon',
+  name: 'first-hackathon',
   category: 'career',
   subcategory: 'coding',
   rating: 'silver',
