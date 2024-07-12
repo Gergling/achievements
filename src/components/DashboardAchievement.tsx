@@ -6,7 +6,7 @@ type DashboardAchievementProps = Omit<AchievementConfig, 'component'>;
 
 const getDashboardDateFormat = (date: Date): string => {
   const day = date.getUTCDate();
-  const month = date.getUTCMonth();
+  const month = date.getUTCMonth() + 1;
   const year = date.getUTCFullYear();
   return `${day}/${month}/${year}`;
 };

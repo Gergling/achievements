@@ -7,7 +7,7 @@ const Component = () => <>
 </>;
 
 const data: AchievementConfig = {
-  key: 'achievement-display',
+  key: 'first-written-sketch-without-performance',
   category: 'artistic',
   subcategory: 'writing',
   rating: 'bronze',

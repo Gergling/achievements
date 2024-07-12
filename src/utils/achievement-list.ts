@@ -17,4 +17,14 @@ export const list: AchievementConfig[] = [
   firstHackathon,
   firstWrittenSketchWithoutPerformance,
   phaseIndicator,
-];
+].sort((a, b) => {
+  const aDate = a.date;
+  const bDate = b.date;
+
+  if (aDate > bDate) {
+    return -1;
+  } else if (aDate < bDate) {
+    return 1;
+  }
+  return 0;
+});
