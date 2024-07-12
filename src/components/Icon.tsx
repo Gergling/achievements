@@ -1,5 +1,6 @@
 import CodeBrackets from '../assets/code-brackets.svg';
 import Dumbbell from '../assets/dumbbell.svg';
+import HammerSpanner from '../assets/hammer-spanner.svg';
 
 import { AchievementConfig } from "../types";
 import { colour } from "../utils/pillar-colour";
@@ -21,6 +22,8 @@ const IconBypillar = ({
   switch (hobby) {
     case 'coding':
       return <CodeBrackets />;
+    case 'crafts':
+      return <HammerSpanner />;
   }
   return <Unknown>?</Unknown>;
 }
