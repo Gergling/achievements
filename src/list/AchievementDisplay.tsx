@@ -11,7 +11,7 @@ const Component = () => <>
 const data: AchievementConfig = {
   name: 'achievement-display',
   pillar: 'artistic',
-  hobby: 'coding',
+  interest: 'coding',
   rating: 'silver',
   date: new Date('2026-12-31'),
   description: 'Achievement Display',

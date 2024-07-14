@@ -9,7 +9,7 @@ const Component = () => <>
 const data: AchievementConfig = {
   name: 'first-hackathon',
   pillar: 'career',
-  hobby: 'coding',
+  interest: 'coding',
   rating: 'silver',
   date: new Date('2024-07-03'),
   description: 'First hackathon',

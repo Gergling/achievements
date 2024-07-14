@@ -7,7 +7,7 @@ const Component = () => <>
 const data: AchievementConfig = {
   name: 'banged-grains',
   pillar: 'artistic',
-  hobby: 'coding',
+  interest: 'coding',
   rating: 'bronze',
   date: new Date('2024-04-19'),
   description: 'Banged Grains', 

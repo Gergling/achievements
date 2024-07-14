@@ -9,7 +9,7 @@ type DashboardAchievementProps = Omit<AchievementConfig, 'component'>;
 export const DashboardAchievement = ({
   name,
   pillar,
-  hobby,
+  interest,
   rating,
   date,
   description,
@@ -17,7 +17,7 @@ export const DashboardAchievement = ({
   const navigate = useNavigate();
   return (
     <Container rating={rating} onClick={() => navigate(`/${name}`)}>
-      <Icon pillar={pillar} hobby={hobby} />
+      <Icon pillar={pillar} interest={interest} />
       <div>
         <div className="date">{getDashboardDateFormat(date)}</div>
         <div className="description">{description}</div>

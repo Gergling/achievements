@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import ViewContext from "./ViewContext";
 import { list } from "../utils/achievement-list";
 import { RatingBorder } from "./AchievementPage.style";
 import { getDashboardDateFormat } from "../utils/get-dashboard-date-format";
@@ -16,18 +15,18 @@ export const AchievementPage = () => {
 
   const {
     pillar,
-    hobby,
+    interest,
     rating,
     date,
     description,
     component,
   } = achievement;
 
-  return <ViewContext.Provider value="detail">
+  return <>
     <a style={{ color: '#ddd' }} href='/'>Dashboard</a>
     <div style={{ display: 'flex' }}>
       <RatingBorder rating={rating}>
-        <Icon pillar={pillar} hobby={hobby} />
+        <Icon pillar={pillar} interest={interest} />
       </RatingBorder>
       <div style={{ display: 'flex' }}>
         <div>{getDashboardDateFormat(date)}</div>
@@ -35,5 +34,5 @@ export const AchievementPage = () => {
       </div>
     </div>
     <div>{component}</div>
-  </ViewContext.Provider>
+  </>
 };

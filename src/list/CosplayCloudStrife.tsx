@@ -7,7 +7,7 @@ const Component = () => <>
 const data: AchievementConfig = {
   name: 'cosplay-cloud-strife',
   pillar: 'artistic',
-  hobby: 'crafts',
+  interest: 'crafts',
   rating: 'gold',
   date: new Date('2023-03-18'),
   description: 'Cloud Strife cosplay', 

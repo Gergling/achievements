@@ -9,7 +9,7 @@ const Component = () => <>
 const data: AchievementConfig = {
   name: 'first-written-sketch-without-performance',
   pillar: 'artistic',
-  hobby: 'writing',
+  interest: 'writing',
   rating: 'bronze',
   date: new Date('2022-05-31'),
   description: 'The sketch where Batman is offered a lozenge', 

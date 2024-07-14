@@ -1,6 +1,7 @@
 import achievementDisplay from '../list/AchievementDisplay';
 import ariaDiGelato from '../list/AriaDiGelato';
 import bangedGrains from '../list/BangedGrains';
+import boardGameCafe3May from '../list/BoardGameCafe3May';
 import cosplayCloudStrife from '../list/CosplayCloudStrife';
 import dbBench40 from '../list/DBBench40';
 import firstHackathon from '../list/FirstHackathon';
@@ -12,6 +13,7 @@ export const list: AchievementConfig[] = [
   achievementDisplay,
   ariaDiGelato,
   bangedGrains,
+  boardGameCafe3May,
   cosplayCloudStrife,
   dbBench40,
   firstHackathon,

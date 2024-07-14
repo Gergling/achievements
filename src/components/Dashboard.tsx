@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { list } from '../utils/achievement-list';
 import { List } from './Dashboard.style';
 import { DashboardAchievement } from './DashboardAchievement';
-import ViewContext from './ViewContext';
 import { AchievementConfig } from '../types';
 import { isSince } from '../utils/is-since';
 import { DashboardRecent } from './DashboardRecent';
@@ -87,7 +86,11 @@ export const Dashboard = () => {
   }, [groupingMode]);
 
   return (
-    <ViewContext.Provider value="dashboard">
+    <>
+      <ul>
+        <li>Production: This is a bit big because we want to make sure the pipeline works.</li>
+        <li>Meta page for explaining the pillars, interests and ratings.</li>
+      </ul>
       <ul>
         {recent.map((achievement) => <DashboardRecent
           key={achievement.name}
@@ -108,7 +111,7 @@ export const Dashboard = () => {
                 {achievements.map(({
                   name,
                   pillar,
-                  hobby,
+                  interest,
                   rating,
                   date,
                   description,
@@ -116,7 +119,7 @@ export const Dashboard = () => {
                   key={name}
                   name={name}
                   pillar={pillar}
-                  hobby={hobby}
+                  interest={interest}
                   rating={rating}
                   date={date}
                   description={description}
@@ -126,6 +129,6 @@ export const Dashboard = () => {
           )
         )}
       </ul>
-    </ViewContext.Provider>
+    </>
   );
 };

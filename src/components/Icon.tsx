@@ -1,25 +1,25 @@
 import CodeBrackets from '../assets/code-brackets.svg';
 import Dumbbell from '../assets/dumbbell.svg';
 import HammerSpanner from '../assets/hammer-spanner.svg';
+import { pillars } from '../literals/pillars';
 
 import { AchievementConfig } from "../types";
-import { colour } from "../utils/pillar-colour";
 import { Container, Unknown } from './Icon.style';
 
 type IconProps = {
   pillar: AchievementConfig['pillar'];
-  hobby: AchievementConfig['hobby'];
+  interest: AchievementConfig['interest'];
 };
 
-const IconBypillar = ({
+const IconByPillar = ({
   pillar,
-  hobby,
+  interest,
 }: IconProps) => {
-  switch (`${pillar}-${hobby}`) {
-    case 'health-physical':
+  switch (`${pillar}-${interest}`) {
+    case 'health-lifting':
       return <Dumbbell />;
   }
-  switch (hobby) {
+  switch (interest) {
     case 'coding':
       return <CodeBrackets />;
     case 'crafts':
@@ -30,13 +30,13 @@ const IconBypillar = ({
 
 export const Icon = ({
   pillar,
-  hobby,
+  interest,
 }: IconProps) => {
-  const pillarColour = colour[pillar];
+  const pillarColour = pillars[pillar].colour;
   return <Container color={pillarColour}>
-    <IconBypillar
+    <IconByPillar
       pillar={pillar}
-      hobby={hobby}
+      interest={interest}
     />
   </Container>
 };

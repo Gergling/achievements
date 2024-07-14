@@ -7,7 +7,7 @@ const Component = () => <>
 const data: AchievementConfig = {
   name: 'aria-di-gelato',
   pillar: 'artistic',
-  hobby: 'performance',
+  interest: 'performance',
   rating: 'gold',
   date: new Date('2024-05-29'),
   description: 'Aria di Gelato', 
