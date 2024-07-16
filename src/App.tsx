@@ -1,6 +1,7 @@
 import {
-  createBrowserRouter,
-  RouterProvider,
+  HashRouter,
+  Route,
+  Routes,
 } from "react-router-dom";
 import { Dashboard } from './components/Dashboard';
 import { AchievementPage } from './components/AchievementPage';
@@ -10,21 +11,17 @@ const Container = styled.div`
   background-color: #444;
 `;
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Dashboard />,
-  },
-  {
-    path: "/:achievementName",
-    element: <AchievementPage />,
-  },
-]);
-
-const App = () => (
-  <Container>
-    <RouterProvider router={router} />
-  </Container>
-);
+const App = () => {
+  return (
+    <Container>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/:achievementName" element={<AchievementPage />} />
+        </Routes>
+      </HashRouter>
+    </Container>
+  );
+};
 
 export default App

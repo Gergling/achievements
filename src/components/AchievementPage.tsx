@@ -10,7 +10,7 @@ export const AchievementPage = () => {
   const achievement = list.find(({ name }) => name === achievementName);
 
   if (!achievement) {
-    return <div>Not found</div>;
+    return <div>Achievement page. No achievement found named "{achievementName}".</div>;
   }
 
   const {
@@ -23,7 +23,7 @@ export const AchievementPage = () => {
   } = achievement;
 
   return <>
-    <a style={{ color: '#ddd' }} href='/'>Dashboard</a>
+    <a style={{ color: '#ddd' }} href='#/'>Dashboard</a>
     <div style={{ display: 'flex' }}>
       <RatingBorder rating={rating}>
         <Icon pillar={pillar} interest={interest} />
