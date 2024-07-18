@@ -16,7 +16,9 @@ jobs:
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        path: dist/
+        with:
+          path: dist/
+          if-no-files-found: error
 
   deploy:
     needs: build
