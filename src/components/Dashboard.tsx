@@ -88,10 +88,6 @@ export const Dashboard = () => {
   return (
     <>
       <ul>
-        <li>Production: This is a bit big because we want to make sure the pipeline works.</li>
-        <li>Meta page for explaining the pillars, interests and ratings.</li>
-      </ul>
-      <ul>
         {recent.map((achievement) => <DashboardRecent
           key={achievement.name}
           {...achievement}
