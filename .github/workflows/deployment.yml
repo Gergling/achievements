@@ -22,7 +22,6 @@ jobs:
         with:
           path: dist/
 
-  # Testing branch protection.
   deploy:
     needs: build
 
