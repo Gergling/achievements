@@ -51,17 +51,8 @@ const getGroupingByRating = (achievements: AchievementConfig[]): Group[] =>
     achievements: achievements.filter((achievement) => achievement.rating === rating),
   }));
 
-const isNonNil = (value: AchievementConfig | null | undefined | void): value is AchievementConfig =>
-  value != null;
-
-const getRecent = (achievements: AchievementConfig[]): AchievementConfig[] =>
-  ratingLabels.map(({ rating }) =>
-    achievements.find((achievement) => achievement.rating === rating)
-  ).filter(isNonNil);
-
 export const Dashboard = () => {
   const [grouping, setGrouping] = useState<Group[]>([]);
-  const [recent, setRecent] = useState<AchievementConfig[]>([]);
   const [groupingMode, setGroupingMode] = useState<GroupingMode>('date');
 
   const updateGrouping = () => {
@@ -78,21 +69,11 @@ export const Dashboard = () => {
 
   useEffect(() => {
     updateGrouping();
-    setRecent(getRecent(list));
-  }, [list]);
-
-  useEffect(() => {
-    updateGrouping();
   }, [groupingMode]);
 
   return (
     <>
-      <ul>
-        {recent.map((achievement) => <DashboardRecent
-          key={achievement.name}
-          {...achievement}
-        />)}
-      </ul>
+      <DashboardRecent />
       By
       <button onClick={handleGroupingMode('date')}>Date</button>
       |
