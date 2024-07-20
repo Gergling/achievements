@@ -1,27 +1,30 @@
+import { useEffect, useState } from "react";
 import { AchievementConfig } from "../types";
-import { getDashboardDateFormat } from "../utils/get-dashboard-date-format";
-import { Container, Link } from "./DashboardRecent.style";
-import { Icon } from "./Icon";
+import { list } from '../utils/achievement-list';
+import { DashboardRecentItem } from "./DashboardRecentItem";
+import { Container } from "./DashboardRecent.style";
 
-export const DashboardRecent = ({
-  name,
-  pillar,
-  interest,
-  rating,
-  date,
-  description,
-  component,
-}: AchievementConfig) => (
-  <Container rating={rating}>
-    <Link href={`/${name}`}>
-      <Icon pillar={pillar} interest={interest} />
-      <div>
-        <div style={{ display: 'flex' }}>
-          <div className="date">{getDashboardDateFormat(date)}</div>
-          <div style={{ overflow: 'hidden' }}>{description}</div>
-        </div>
-        <div>{component}</div>
-      </div>
-    </Link>
+const ratingOrder = ['gold', 'silver', 'bronze'];
+
+const isNonNil = (value: AchievementConfig | null | undefined | void): value is AchievementConfig =>
+  value != null;
+
+const getRecent = (achievements: AchievementConfig[]): AchievementConfig[] =>
+  ratingOrder.map((rating) =>
+    achievements.find((achievement) => achievement.rating === rating)
+  ).filter(isNonNil);
+
+export const DashboardRecent = () => {
+  const [recent, setRecent] = useState<AchievementConfig[]>([]);
+
+  useEffect(() => {
+    setRecent(getRecent(list));
+  }, [list]);
+
+  return <Container>
+    {recent.map((achievement) => <DashboardRecentItem
+      key={achievement.name}
+      {...achievement}
+    />)}
   </Container>
-);
+};
