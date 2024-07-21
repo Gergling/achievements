@@ -1,9 +1,9 @@
-import CodeBrackets from '../assets/code-brackets.svg';
-import Dumbbell from '../assets/dumbbell.svg';
-import HammerSpanner from '../assets/hammer-spanner.svg';
-import { pillars } from '../literals/pillars';
+import CodeBrackets from '../../assets/code-brackets.svg';
+import Dumbbell from '../../assets/dumbbell.svg';
+import HammerSpanner from '../../assets/hammer-spanner.svg';
+import { pillars } from '../../literals/pillars';
 
-import { AchievementConfig } from "../types";
+import { AchievementConfig } from "../../types";
 import { Container, Unknown } from './Icon.style';
 
 type IconProps = {

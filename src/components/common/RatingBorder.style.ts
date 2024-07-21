@@ -1,7 +1,5 @@
-'use client';
-
 import styled from '@emotion/styled';
-import { AchievementConfig } from '../types';
+import { AchievementConfig } from '../../types';
 import tinyColor from 'tinycolor2';
 
 const borderWidth = '5px';
@@ -17,7 +15,7 @@ export const List = styled.ul`
 `;
 
 // TODO: Might be worth considering a background SVG when the graphical improvement becomes a factor.
-export const RatingsBorder = styled.li<{
+export const RatingsBorder = styled.div<{
   rating: AchievementConfig['rating'];
 }>`
   display: flex;

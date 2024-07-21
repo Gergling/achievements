@@ -1,7 +1,7 @@
-import { AchievementConfig } from "../types";
-import { getDashboardDateFormat } from "../utils/get-dashboard-date-format";
+import { AchievementConfig } from "../../types";
+import { getDashboardDateFormat } from "../../utils/get-dashboard-date-format";
 import { Container, Link } from "./DashboardRecentItem.style";
-import { Icon } from "./Icon";
+import { Icon } from "../common/Icon";
 
 export const DashboardRecentItem = ({
   name,
