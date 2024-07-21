@@ -14,6 +14,13 @@ type Group = {
 
 type GroupingMode = 'date' | 'rating';
 
+const groupingModes: {
+  [key in GroupingMode]: string;
+} = {
+  date: 'Date',
+  rating: 'Rating',
+};
+
 const dateGroups = {
   '7 Days': (date: Date) => isSince(date, 7),
   '30 Days': (date: Date) => isSince(date, 30),
@@ -48,6 +55,33 @@ const getGroupingByRating = (achievements: AchievementConfig[]): Group[] =>
     achievements: achievements.filter((achievement) => achievement.rating === rating),
   }));
 
+type GroupingModeControlProps = {
+  modeName: GroupingMode;
+  handleGroupingMode: (mode: GroupingMode) => any;
+};
+
+const GroupingModeControl = ({
+  modeName,
+  handleGroupingMode,
+}: GroupingModeControlProps) => {
+  const modeLabel = groupingModes[modeName];
+  const otherGroupingModes: {
+    name: GroupingMode,
+    label: string
+  }[] = Object
+    .entries(groupingModes)
+    .filter(([key]) => key !== modeName)
+    .map(([name, label]) => ({ name: name as GroupingMode, label }));
+
+  return <div>
+    <span>Grouping by {modeLabel}</span> |
+    Group by
+    {otherGroupingModes.map(({ name, label }) => (
+      <button onClick={() => handleGroupingMode(name)}>{label}</button>
+    ))}
+  </div>;
+};
+
 export const GroupedAchievements = () => {
   const [grouping, setGrouping] = useState<Group[]>([]);
   const [groupingMode, setGroupingMode] = useState<GroupingMode>('date');
@@ -60,9 +94,7 @@ export const GroupedAchievements = () => {
     }
   };
 
-  const handleGroupingMode = (mode: GroupingMode) => () => {
-    setGroupingMode(mode);
-  };
+  const handleGroupingMode = (mode: GroupingMode): any => setGroupingMode(mode);
 
   useEffect(() => {
     updateGrouping();
@@ -70,10 +102,7 @@ export const GroupedAchievements = () => {
 
   return (
     <>
-      By
-      <button onClick={handleGroupingMode('date')}>Date</button>
-      |
-      <button onClick={handleGroupingMode('rating')}>Rating</button>
+      <GroupingModeControl modeName={groupingMode} handleGroupingMode={handleGroupingMode} />
       <Grouped>
         {grouping
           .filter(({ achievements }) => achievements.length > 0)
