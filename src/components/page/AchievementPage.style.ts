@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { RatingsBorder } from './Dashboard.style';
+import { RatingsBorder } from '../common/RatingBorder.style';
 
-export const RatingBorder = styled(RatingsBorder.withComponent('div'))`
+export const RatingBorder = styled(RatingsBorder)`
   width: 150px;
   height: 150px;
   padding: 25px;

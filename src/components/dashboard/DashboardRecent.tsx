@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { AchievementConfig } from "../types";
-import { list } from '../utils/achievement-list';
+import { AchievementConfig } from "../../types";
+import { list } from '../../utils/achievement-list';
 import { DashboardRecentItem } from "./DashboardRecentItem";
 import { Container } from "./DashboardRecent.style";
 

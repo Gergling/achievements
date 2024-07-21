@@ -5,3 +5,7 @@ export const Grouped = styled.ul`
   margin: 0;
   list-style: none;
 `;
+
+export const GroupedHeader = styled.h2`
+  text-align: center;
+`;

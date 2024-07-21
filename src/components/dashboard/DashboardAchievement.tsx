@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { AchievementConfig } from "../types";
-import { getDashboardDateFormat } from "../utils/get-dashboard-date-format";
+import { AchievementConfig } from "../../types";
+import { getDashboardDateFormat } from "../../utils/get-dashboard-date-format";
 import { Container } from "./DashboardAchievement.style";
-import { Icon } from "./Icon";
+import { Icon } from "../common/Icon";
 
 type DashboardAchievementProps = Omit<AchievementConfig, 'component'>;
 

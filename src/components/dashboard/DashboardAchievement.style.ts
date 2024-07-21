@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { RatingsBorder } from './Dashboard.style';
+import { RatingsBorder } from '../common/RatingBorder.style';
 
-export const Container = styled(RatingsBorder)`
+export const Container = styled(RatingsBorder.withComponent('li'))`
   display: flex;
   align-items: flex-start;
 

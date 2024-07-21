@@ -3,9 +3,9 @@ import { AchievementConfig } from "../../types";
 import { isSince } from "../../utils/is-since";
 import { Rating, ratings } from "../../literals/ratings";
 import { list } from "../../utils/achievement-list";
-import { List } from "../Dashboard.style";
-import { DashboardAchievement } from "../DashboardAchievement";
-import { Grouped } from "./GroupedAchievements.style";
+import { List } from "../dashboard/Dashboard.style";
+import { DashboardAchievement } from "../dashboard/DashboardAchievement";
+import { Grouped, GroupedHeader } from "./GroupedAchievements.style";
 
 type Group = {
   label: string;
@@ -77,7 +77,7 @@ const GroupingModeControl = ({
     <span>Grouping by {modeLabel}</span> |
     Group by
     {otherGroupingModes.map(({ name, label }) => (
-      <button onClick={() => handleGroupingMode(name)}>{label}</button>
+      <button key={name} onClick={() => handleGroupingMode(name)}>{label}</button>
     ))}
   </div>;
 };
@@ -108,7 +108,7 @@ export const GroupedAchievements = () => {
           .filter(({ achievements }) => achievements.length > 0)
           .map(({ label, achievements }) => (
             <li key={label}>
-              {grouping.length > 1 ? label : ''}
+              {grouping.length > 1 ? <GroupedHeader>{label}</GroupedHeader> : ''}
               <List>
                 {achievements.map(({
                   name,
