@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { AchievementConfig } from '../../types';
 import tinyColor from 'tinycolor2';
+import { getThemeProperty } from '../../utils/get-theme-property';
 
 const borderWidth = '5px';
 
@@ -18,13 +19,9 @@ export const List = styled.ul`
 export const RatingsBorder = styled.div<{
   rating: AchievementConfig['rating'];
 }>`
-  display: flex;
-  align-items: flex-start;
-
-  flex: 0 0 30%;
   margin: auto;
 
-  background: #444;
+  background: ${getThemeProperty('app.background')};
 
   position: relative;
   box-sizing: border-box;

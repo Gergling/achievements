@@ -3,9 +3,8 @@ import { AchievementConfig } from "../../types";
 import { isSince } from "../../utils/is-since";
 import { Rating, ratings } from "../../literals/ratings";
 import { list } from "../../utils/achievement-list";
-import { List } from "../dashboard/Dashboard.style";
-import { DashboardAchievement } from "../dashboard/DashboardAchievement";
 import { Grouped, GroupedHeader } from "./GroupedAchievements.style";
+import { GroupedAchievementList } from "./GroupedAchievementList";
 
 type Group = {
   label: string;
@@ -22,9 +21,9 @@ const groupingModes: {
 };
 
 const dateGroups = {
-  '7 Days': (date: Date) => isSince(date, 7),
-  '30 Days': (date: Date) => isSince(date, 30),
-  '1 Year': (date: Date) => isSince(date, 365),
+  'In the last 7 Days': (date: Date) => isSince(date, 7),
+  'In the last 30 Days': (date: Date) => isSince(date, 30),
+  'In the last year': (date: Date) => isSince(date, 365),
   'Earlier': () => true,
 };
 
@@ -109,24 +108,7 @@ export const GroupedAchievements = () => {
           .map(({ label, achievements }) => (
             <li key={label}>
               {grouping.length > 1 ? <GroupedHeader>{label}</GroupedHeader> : ''}
-              <List>
-                {achievements.map(({
-                  name,
-                  pillar,
-                  interest,
-                  rating,
-                  date,
-                  description,
-                }) => <DashboardAchievement
-                  key={name}
-                  name={name}
-                  pillar={pillar}
-                  interest={interest}
-                  rating={rating}
-                  date={date}
-                  description={description}
-                />)}
-              </List>
+              <GroupedAchievementList achievements={achievements} />
             </li>
           )
         )}

@@ -8,4 +8,5 @@ export const List = styled.ul`
   padding: 0;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: space-between;
 `;

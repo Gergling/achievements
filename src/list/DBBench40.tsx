@@ -14,7 +14,7 @@ const data: AchievementConfig = {
   interest: 'lifting',
   rating: 'gold',
   date: new Date('2024-06-27'),
-  description: 'Benchmark 40kg dumbbells', 
+  description: 'Bench press 40kg dumbbells',
   component: <Component />,
 };
 
