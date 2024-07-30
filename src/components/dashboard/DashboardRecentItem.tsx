@@ -1,6 +1,6 @@
 import { AchievementConfig } from "../../types";
 import { getDashboardDateFormat } from "../../utils/get-dashboard-date-format";
-import { Container, Link } from "./DashboardRecentItem.style";
+import { Body, BodyFade, Container, Header, Link, Overview } from "./DashboardRecentItem.style";
 import { Icon } from "../common/Icon";
 
 export const DashboardRecentItem = ({
@@ -13,15 +13,18 @@ export const DashboardRecentItem = ({
   component,
 }: AchievementConfig) => (
   <Container rating={rating}>
-    <Link href={`/${name}`}>
+    <Link to={`/${name}`}>
       <Icon pillar={pillar} interest={interest} />
-      <div>
-        <div style={{ display: 'flex' }}>
+      <Overview>
+        <Header>
           <div className="date">{getDashboardDateFormat(date)}</div>
           <div style={{ overflow: 'hidden' }}>{description}</div>
-        </div>
-        <div>{component}</div>
-      </div>
+        </Header>
+        <Body>
+          {component}
+          <BodyFade />
+        </Body>
+      </Overview>
     </Link>
   </Container>
 );
