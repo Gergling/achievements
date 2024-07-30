@@ -2,29 +2,30 @@ import { useEffect, useState } from "react";
 import { AchievementConfig } from "../../types";
 import { list } from '../../utils/achievement-list';
 import { DashboardRecentItem } from "./DashboardRecentItem";
-import { Container } from "./DashboardRecent.style";
+import { Bronze, Container, Silver, SubGoldContainer } from "./DashboardRecent.style";
+import { Rating } from "../../literals/ratings";
 
-const ratingOrder = ['gold', 'silver', 'bronze'];
-
-const isNonNil = (value: AchievementConfig | null | undefined | void): value is AchievementConfig =>
-  value != null;
-
-const getRecent = (achievements: AchievementConfig[]): AchievementConfig[] =>
-  ratingOrder.map((rating) =>
-    achievements.find((achievement) => achievement.rating === rating)
-  ).filter(isNonNil);
+const getRecentByRating = (rating: Rating, achievements: AchievementConfig[]) =>
+  achievements.find((achievement) => achievement.rating === rating)
 
 export const DashboardRecent = () => {
-  const [recent, setRecent] = useState<AchievementConfig[]>([]);
+  const [gold, setGold] = useState<AchievementConfig>();
+  const [silver, setSilver] = useState<AchievementConfig>();
+  const [bronze, setBronze] = useState<AchievementConfig>();
 
   useEffect(() => {
-    setRecent(getRecent(list));
+    setGold(getRecentByRating('gold', list));
+    setSilver(getRecentByRating('silver', list));
+    setBronze(getRecentByRating('bronze', list));
   }, [list]);
 
+  if (!gold || !silver || !bronze) return null;
+
   return <Container>
-    {recent.map((achievement) => <DashboardRecentItem
-      key={achievement.name}
-      {...achievement}
-    />)}
+    <DashboardRecentItem {...gold} />
+    <SubGoldContainer>
+      <Silver><DashboardRecentItem {...silver} /></Silver>
+      <Bronze><DashboardRecentItem {...bronze} /></Bronze>
+    </SubGoldContainer>
   </Container>
 };
