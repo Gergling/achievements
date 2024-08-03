@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AchievementConfig } from "../../types";
 import { list } from '../../utils/achievement-list';
 import { DashboardRecentItem } from "./DashboardRecentItem";
-import { Bronze, Container, Silver, SubGoldContainer } from "./DashboardRecent.style";
+import { Container, Header, SubGoldContainer, SubGoldItem } from "./DashboardRecent.style";
 import { Rating } from "../../literals/ratings";
 
 const getRecentByRating = (rating: Rating, achievements: AchievementConfig[]) =>
@@ -19,13 +19,14 @@ export const DashboardRecent = () => {
     setBronze(getRecentByRating('bronze', list));
   }, [list]);
 
-  if (!gold || !silver || !bronze) return null;
+  if (!gold || !silver || !bronze) return 'Could not find an achievement.';
 
   return <Container>
+    <Header>Most Recent</Header>
     <DashboardRecentItem {...gold} />
     <SubGoldContainer>
-      <Silver><DashboardRecentItem {...silver} /></Silver>
-      <Bronze><DashboardRecentItem {...bronze} /></Bronze>
+      <SubGoldItem><DashboardRecentItem {...silver} /></SubGoldItem>
+      <SubGoldItem><DashboardRecentItem {...bronze} /></SubGoldItem>
     </SubGoldContainer>
   </Container>
 };
