@@ -1,4 +1,4 @@
-export type Interest = 'games' | 'lifting' | 'coding' | 'performance' | 'crafts' | 'writing';
+export type Interest = 'coding' | 'games' | 'lifting' | 'maintenance' | 'performance' | 'crafts' | 'writing';
 
 export const interests: {
   [key in Interest]: {
@@ -21,6 +21,10 @@ export const interests: {
   lifting: {
     label: 'Weight Training',
     description: 'My primary physical health support activity is weight training. To keep myself interested, I have a variety of goals and metrics to track.',
+  },
+  maintenance: {
+    label: 'Maintenance',
+    description: 'This is usually something I have to do or endure to keep my life running.',
   },
   performance: {
     label: 'Performance',

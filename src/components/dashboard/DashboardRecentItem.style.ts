@@ -5,9 +5,9 @@ import { getThemeProperty } from '../../utils/get-theme-property';
 import { NavLink } from 'react-router-dom';
 
 const VERTICAL_PADDING = 20;
-const HEIGHT = (VERTICAL_PADDING * 2) + ICON_HEIGHT;
+const HEIGHT = (VERTICAL_PADDING * 2) + ICON_HEIGHT +100;
 
-export const Container = styled(RatingsBorder.withComponent('li'))`
+export const Container = styled(RatingsBorder)`
   height: ${HEIGHT}px;
 `;
 
@@ -16,6 +16,7 @@ export const Link = styled(NavLink)`
   gap: 10px;
   text-decoration: none;
   color: #ddd;
+  height: 100%;
 `;
 
 export const Overview = styled.div`
@@ -24,18 +25,18 @@ export const Overview = styled.div`
 `;
 
 export const OverviewChild = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
 `;
 
-export const Header = styled(OverviewChild)`
+export const Header = styled.div`
   display: flex;
-  height: 20px;
+`;
+
+export const Description = styled.h4`
 `;
 
 export const Body = styled(OverviewChild)`
-  top: 20px;
+  position: absolute;
+  top: ${ICON_HEIGHT}px;
   bottom: 0;
   overflow: hidden;
 `;
