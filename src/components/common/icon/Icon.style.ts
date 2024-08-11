@@ -1,8 +1,8 @@
-import emotionStyled from "@emotion/styled";
+import styled from "@emotion/styled";
 
 export const HEIGHT = 100;
 
-export const Container = emotionStyled.div`
+export const StyledIconContainer = styled.div`
   width: 100px;
   height: ${HEIGHT}px;
   background-repeat: no-repeat;
@@ -10,7 +10,7 @@ export const Container = emotionStyled.div`
   color: ${({ color }) => color};
 `;
 
-export const Unknown = emotionStyled.div`
+export const Unknown = styled.div`
   font-size: 90px;
   text-align: center;
   font-weight: bold;

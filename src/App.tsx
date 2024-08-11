@@ -9,6 +9,7 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./theme";
 import { getThemeProperty } from "./utils/get-theme-property";
+import { Meta } from "./components/meta/Meta";
 
 const Container = styled.div`
   background-color: ${getThemeProperty('app.background')};
@@ -28,7 +29,8 @@ const App = () => {
         <HashRouter>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/:achievementName" element={<AchievementPage />} />
+            <Route path="/achievement/:achievementName" element={<AchievementPage />} />
+            <Route path="/glossary" element={<Meta />} />
           </Routes>
         </HashRouter>
       </Container>

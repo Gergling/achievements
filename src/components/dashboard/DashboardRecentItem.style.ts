@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { HEIGHT as ICON_HEIGHT } from '../common/Icon.style';
+import { HEIGHT as ICON_HEIGHT } from '../common/icon/Icon.style';
 import { RatingsBorder } from '../common/RatingBorder.style';
 import { getThemeProperty } from '../../utils/get-theme-property';
 import { NavLink } from 'react-router-dom';

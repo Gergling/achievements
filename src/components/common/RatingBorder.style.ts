@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { AchievementConfig } from '../../types';
-import tinyColor from 'tinycolor2';
 import { getThemeProperty } from '../../utils/get-theme-property';
+import { getRatingBackgroundProperty } from '../../utils/get-rating-background-property';
 
 const borderWidth = '5px';
 
@@ -36,22 +36,7 @@ export const RatingsBorder = styled.div<{
     border-radius: 20px;
     padding: ${borderWidth}; /* control the border thickness */
 
-    ${({ rating }) => {
-      const colour = ({
-        gold: 'gold',
-        silver: 'silver',
-        bronze: '#b07000',
-      }[rating]);
-      const dark = tinyColor(colour).darken(30).toRgbString();
-      const light = tinyColor(colour).lighten(30).toRgbString();
-      return {
-        background: `linear-gradient(
-          135deg, 
-          ${light}, 
-          ${dark}
-        )`
-      }
-    }}
+    ${getRatingBackgroundProperty}
 
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;

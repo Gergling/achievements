@@ -1,4 +1,12 @@
-export type Interest = 'coding' | 'games' | 'lifting' | 'maintenance' | 'performance' | 'crafts' | 'writing';
+export type Interest =
+  'coding' |
+  'martialarts' |
+  'games' |
+  'lifting' |
+  'maintenance' |
+  'performance' |
+  'crafts' |
+  'writing';
 
 export const interests: {
   [key in Interest]: {
@@ -20,14 +28,18 @@ export const interests: {
   },
   lifting: {
     label: 'Weight Training',
-    description: 'My primary physical health support activity is weight training. To keep myself interested, I have a variety of goals and metrics to track.',
+    description: 'My primary physical health support activity is weight training. To keep myself interested, I have a variety of goals and metrics to track. Explaining my weight training system is like trying to explain an unlikely conspiracy theory.',
   },
   maintenance: {
     label: 'Maintenance',
     description: 'This is usually something I have to do or endure to keep my life running.',
   },
+  martialarts: {
+    label: 'Martial Arts',
+    description: 'Physical exercise plus making me use my brain plus learning stuff plus an opportunity to socialise. What\'s not to like?',
+  },
   performance: {
-    label: 'Performance',
+    label: 'Performance Art',
     description: 'Performance art helps me connect to a lot of people at once and get real-time social feedback. While I haven\'t found a way to capture the feedback metrics due to technological constraints, I have been able to source a steady stream of joy from this activity, making it quite sustainable.',
   },
   writing: {
