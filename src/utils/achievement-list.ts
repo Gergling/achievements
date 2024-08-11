@@ -6,6 +6,7 @@ import cosplayCloudStrife from '../list/CosplayCloudStrife';
 import dbBench40 from '../list/DBBench40';
 import firstHackathon from '../list/FirstHackathon';
 import firstWrittenSketchWithoutPerformance from '../list/FirstWrittenSketchWithouPerformance';
+import kungFuFirstGrade from '../list/KungFuGrading';
 import helpedPaint from '../list/HelpedPaint';
 import phaseIndicator from '../list/PhaseIndicator';
 import { AchievementConfig } from '../types';
@@ -19,6 +20,7 @@ export const list: AchievementConfig[] = [
   dbBench40,
   firstHackathon,
   firstWrittenSketchWithoutPerformance,
+  kungFuFirstGrade,
   helpedPaint,
   phaseIndicator,
 ].sort((a, b) => {

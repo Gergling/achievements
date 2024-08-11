@@ -5,6 +5,7 @@ import { Rating, ratings } from "../../literals/ratings";
 import { list } from "../../utils/achievement-list";
 import { Grouped, GroupedHeader } from "./GroupedAchievements.style";
 import { GroupedAchievementList } from "./GroupedAchievementList";
+import { Link } from "react-router-dom";
 
 type Group = {
   label: string;
@@ -23,6 +24,7 @@ const groupingModes: {
 const dateGroups = {
   'In the last 7 Days': (date: Date) => isSince(date, 7),
   'In the last 30 Days': (date: Date) => isSince(date, 30),
+  'In the last 90 Days': (date: Date) => isSince(date, 90),
   'In the last year': (date: Date) => isSince(date, 365),
   'Earlier': () => true,
 };
@@ -78,6 +80,7 @@ const GroupingModeControl = ({
     {otherGroupingModes.map(({ name, label }) => (
       <button key={name} onClick={() => handleGroupingMode(name)}>{label}</button>
     ))}
+    <Link to="/glossary">What do these things mean?</Link>
   </div>;
 };
 

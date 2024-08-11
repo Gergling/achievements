@@ -10,7 +10,7 @@ const data: AchievementConfig = {
   name: 'first-written-sketch-without-performance',
   pillar: 'artistic',
   interest: 'writing',
-  rating: 'bronze',
+  rating: 'silver',
   date: new Date('2022-05-31'),
   description: 'The sketch where Batman is offered a lozenge', 
   component: <Component />,

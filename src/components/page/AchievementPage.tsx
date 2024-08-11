@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { list } from "../../utils/achievement-list";
 import { RatingBorder } from "./AchievementPage.style";
 import { getDashboardDateFormat } from "../../utils/get-dashboard-date-format";
-import { Icon } from "../common/Icon";
+import { Icon } from "../common/icon/Icon";
 
 export const AchievementPage = () => {
   const { achievementName } = useParams();
