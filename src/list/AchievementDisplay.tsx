@@ -13,7 +13,7 @@ const data: AchievementConfig = {
   pillar: 'artistic',
   interest: 'coding',
   rating: 'silver',
-  date: new Date('1926-12-31'),
+  date: new Date('2024-10-06'),
   description: 'Achievement Display',
   component: <Component />,
 };
