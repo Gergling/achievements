@@ -6,20 +6,14 @@ import { AchievementConfig } from "../../types";
 import { IconByInterest } from "../common/icon/IconByInterest";
 import { Heading, MetaStyledIconContainer, StyledColourIcon, Subheading } from "./Meta.style";
 import { MetaItem } from "./MetaItem";
+import { list } from "../../utils/achievement-list";
+import { getGrouping, Group, GroupingPropertyKey, GroupingPropertyType } from "../../utils/get-grouping";
 
-type InterestIconProps = {
-  interest: AchievementConfig['interest'];
+type IconProps<Type extends keyof AchievementConfig> = {
+  [key in Type]: AchievementConfig[key];
 };
 
-type PillarIconProps = {
-  pillar: AchievementConfig['pillar'];
-};
-
-type RatingIconProps = {
-  rating: AchievementConfig['rating'];
-};
-
-const InterestIcon = ({ interest }: InterestIconProps) => {
+const InterestIcon = ({ interest }: IconProps<'interest'>) => {
   return <MetaStyledIconContainer>
     <IconByInterest interest={interest} />
   </MetaStyledIconContainer>
@@ -31,58 +25,57 @@ const IconContainer = ({ colour }: { colour: string }) => (
   </MetaStyledIconContainer>
 );
 
-const PillarIcon = ({ pillar }: PillarIconProps) => {
+const PillarIcon = ({ pillar }: IconProps<'pillar'>) => {
   const colour = pillars[pillar].colour;
   return <IconContainer colour={colour} />;
 };
 
-const RatingIcon = ({ rating }: RatingIconProps) => {
+const RatingIcon = ({ rating }: IconProps<'rating'>) => {
   const colour = ratings[rating].colour
   return <IconContainer colour={colour} />;
 };
 
 type ListItem = {
-  key: string;
+  key: GroupingPropertyType;
   label: string;
   description: string;
   Element: () => JSX.Element;
+  group?: Group;
 };
 
 const List = ({ items }: { items: ListItem[] }) => (
   <ul>
-    {items.map(({ key, label, description, Element }) => (
-      <MetaItem key={key} label={label} description={description}>
+    {items.map(({ key, label, description, Element, group }) => (
+      <MetaItem key={key} label={label} description={description} group={group}>
         <Element />
       </MetaItem>
     ))}
   </ul>
 );
 
-export const Meta = () => {
-  const pillarList: ListItem[] = Object.entries(pillars).map(([key, { label, description }]) => {
+const getList = <Type extends GroupingPropertyType>(
+  mappings: { [key in Type]: { label: string; description: string }; },
+  groupingKey: GroupingPropertyKey,
+  getElement: (key: Type) => JSX.Element,
+): ListItem[] => {
+  const groups: Group[] = getGrouping(list, groupingKey);
+  const entries = Object.entries(mappings) as [Type, { label: string; description: string }][];
+  return entries.map(([key, { label, description }]) => {
+    const group = groups.find((group) => group.key === key);
     return {
       key,
       label,
       description,
-      Element: () => <PillarIcon pillar={key as Pillar} />
-    }
-  });
-  const ratingList: ListItem[] = Object.entries(ratings).map(([key, { label, description }]) => {
-    return {
-      key,
-      label,
-      description,
-      Element: () => <RatingIcon rating={key as Rating} />
+      Element: () => getElement(key),
+      group,
     };
   });
-  const interestList: ListItem[] = Object.entries(interests).map(([key, { label, description }]) => {
-    return {
-      key,
-      label,
-      description,
-      Element: () => <InterestIcon interest={key as Interest} />
-    }
-  });
+};
+
+export const Meta = () => {
+  const pillarList = getList<Pillar>(pillars, 'pillar', (key) => <PillarIcon pillar={key} />);
+  const ratingList = getList<Rating>(ratings, 'rating', (key) => <RatingIcon rating={key} />);
+  const interestList = getList<Interest>(interests, 'interest', (key) => <InterestIcon interest={key} />);
   return (
     <div>
       <Heading>Glossary</Heading>
