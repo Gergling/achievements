@@ -2,15 +2,22 @@ import { theme } from "../theme";
 
 export type Pillar = 'artistic' | 'social' | 'health' | 'career';
 
-const { artistic, social, health, career } = theme.pillars;
-
-export const pillars: {
+type BasePillarMapping = {
   [key in Pillar]: {
     label: string;
     description: string;
+  };
+};
+
+type ConfigPillarMapping = BasePillarMapping & {
+  [key in Pillar]: {
     colour: string;
   };
-} = {
+};
+
+const { artistic, social, health, career } = theme.pillars;
+
+export const pillars: ConfigPillarMapping = {
   artistic: {
     label: 'Artistic',
     description: 'This pillar represents my activities which indulge my arbitrary enjoyments in creating things. This includes things like writing and performance art but can also include coding projects.',

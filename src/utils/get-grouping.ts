@@ -4,7 +4,7 @@ import { Rating, ratings } from "../literals/ratings";
 import { AchievementConfig } from "../types";
 
 export type GroupingPropertyKey = keyof Pick<AchievementConfig, 'pillar' | 'interest' | 'rating'>;
-type GroupingPropertyType = AchievementConfig[GroupingPropertyKey];
+export type GroupingPropertyType = AchievementConfig[GroupingPropertyKey];
 
 export type Group = {
   groupingKey: GroupingPropertyKey;
