@@ -22,6 +22,7 @@ const groupingModes: {
 };
 
 const dateGroups = {
+  'In the future': (date: Date) => isSince(date, 0),
   'In the last 7 Days': (date: Date) => isSince(date, 7),
   'In the last 30 Days': (date: Date) => isSince(date, 30),
   'In the last 90 Days': (date: Date) => isSince(date, 90),
